@@ -1,0 +1,27 @@
+.auth-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  min-height: 70vh;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 40px 36px;
+  box-shadow: var(--shadow-card);
+}
+
+.auth-title { font-size: 26px; margin-bottom: 26px; }
+
+.auth-switch {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  text-align: center;
+  margin-top: 14px;
+}
+.auth-switch a { color: var(--action); font-weight: 700; text-decoration: underline; }

@@ -1,0 +1,74 @@
+.seller-page-title { font-size: 28px; }
+.seller-page-sub { margin-top: 6px; margin-bottom: 28px; font-size: 14px; }
+
+.seller-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 32px;
+}
+
+.seller-stat-card {
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.seller-stat-card svg { color: var(--ink); opacity: 0.6; }
+.seller-stat-value { font-family: var(--font-display); font-size: 26px; font-weight: 600; }
+.seller-stat-label { font-size: 12.5px; color: var(--ink-soft); font-weight: 600; }
+
+.stat-blush  { background: var(--blush); }
+.stat-sage   { background: var(--sage); }
+.stat-butter { background: var(--butter); }
+.stat-plum   { background: var(--plum); }
+
+.seller-lowstock-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 32px;
+}
+.seller-lowstock-head {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 14px;
+}
+.seller-lowstock-head a {
+  font-size: 12.5px; font-weight: 700; color: var(--action);
+  display: flex; align-items: center; gap: 4px;
+}
+.seller-lowstock-list { display: flex; flex-direction: column; gap: 10px; }
+.seller-lowstock-item {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 13.5px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+.seller-lowstock-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+.seller-quick-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.seller-quick-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color 0.15s;
+}
+.seller-quick-card:hover { border-color: var(--action); }
+.seller-quick-card svg { color: var(--action); }
+.seller-quick-card strong { font-size: 15px; }
+.seller-quick-card span { font-size: 13px; color: var(--ink-soft); }
+
+@media (max-width: 900px) {
+  .seller-stats-grid { grid-template-columns: 1fr 1fr; }
+  .seller-quick-actions { grid-template-columns: 1fr; }
+}

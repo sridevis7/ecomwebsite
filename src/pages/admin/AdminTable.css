@@ -1,0 +1,87 @@
+.admin-page-head {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  margin-bottom: 24px; flex-wrap: wrap; gap: 16px;
+}
+
+.admin-filter-tabs { display: flex; gap: 6px; background: var(--paper-dim); padding: 5px; border-radius: 100px; }
+.admin-filter-tabs button {
+  font-size: 12.5px; font-weight: 700; padding: 8px 16px;
+  border-radius: 100px; color: var(--ink-soft);
+}
+.admin-filter-tabs button.active { background: var(--ink); color: var(--paper); }
+
+.admin-card-list { display: flex; flex-direction: column; gap: 14px; }
+
+/* ---------- sellers ---------- */
+.admin-seller-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.admin-seller-info { display: flex; flex-direction: column; gap: 3px; }
+.admin-seller-info strong { font-size: 15px; }
+.admin-seller-info span { font-size: 12.5px; color: var(--ink-soft); }
+.admin-seller-info p { font-size: 12.5px; margin-top: 4px; max-width: 420px; }
+
+.admin-seller-right { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+.admin-seller-actions { display: flex; gap: 8px; }
+.admin-text-action { font-size: 12px; font-weight: 700; color: var(--action); text-decoration: underline; }
+
+/* ---------- generic table ---------- */
+.admin-table {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.admin-table-row {
+  display: grid;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--line);
+  font-size: 13.5px;
+}
+.admin-table-row:last-child { border-bottom: none; }
+.admin-table-head {
+  background: var(--paper-dim);
+  font-size: 11.5px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+
+.admin-table-actions { display: flex; gap: 10px; }
+.admin-table-actions button {
+  font-size: 12px; font-weight: 700; color: var(--ink-soft);
+  padding: 6px 8px; border-radius: var(--radius-sm);
+  display: flex; align-items: center; gap: 4px;
+}
+.admin-table-actions button:hover { background: var(--paper-dim); color: var(--ink); }
+.admin-table-actions button.danger:hover { color: var(--blush-deep); }
+
+/* ---------- modal (reused for category/coupon forms) ---------- */
+.admin-modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(47,43,51,0.45);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 300; padding: 20px;
+}
+.admin-modal {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  max-width: 460px; width: 100%;
+  position: relative;
+}
+.admin-modal h2 { font-size: 21px; margin-bottom: 20px; }
+.admin-modal-close { position: absolute; top: 20px; right: 20px; color: var(--ink-soft); }
+
+@media (max-width: 700px) {
+  .admin-seller-card { flex-direction: column; align-items: flex-start; }
+  .admin-seller-right { align-items: flex-start; }
+}

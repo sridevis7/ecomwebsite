@@ -1,0 +1,73 @@
+.community-page { padding: 44px 0 80px; }
+
+.community-head {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  margin-bottom: 32px; flex-wrap: wrap; gap: 16px;
+}
+.community-title { font-size: 30px; }
+
+.community-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.community-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.community-image {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+}
+
+.community-card-body { padding: 16px; }
+
+.community-card-user { display: flex; align-items: center; gap: 9px; margin-bottom: 10px; }
+.community-avatar {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--plum); color: #5C3F70;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700;
+}
+.community-card-user strong { font-size: 13.5px; }
+
+.community-caption { font-size: 13.5px; margin-bottom: 10px; }
+
+.community-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+
+.community-actions {
+  display: flex; gap: 18px;
+  padding-top: 10px; border-top: 1px solid var(--line);
+}
+.community-actions button {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 600; color: var(--ink-soft);
+}
+.community-actions button:hover { color: var(--blush-deep); }
+
+.community-comments { margin-top: 14px; display: flex; flex-direction: column; gap: 8px; }
+.community-comment { font-size: 12.5px; }
+.community-comment strong { margin-right: 5px; }
+
+.community-comment-input { display: flex; gap: 8px; margin-top: 6px; }
+.community-comment-input input {
+  flex: 1; border: 1.5px solid var(--line); border-radius: 100px;
+  padding: 8px 13px; font-size: 12.5px;
+}
+.community-comment-input button {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--ink); color: var(--paper);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .community-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .community-grid { grid-template-columns: 1fr; }
+}

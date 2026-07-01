@@ -1,0 +1,66 @@
+.loyalty-page { padding: 44px 0 80px; }
+.loyalty-title { font-size: 30px; margin-bottom: 28px; }
+
+.loyalty-balance-card {
+  background: var(--ink);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-bottom: 28px;
+}
+.loyalty-balance-icon {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--butter);
+  color: #7A5E15;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.loyalty-balance-label { font-size: 12.5px; color: #C9C3CE; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+.loyalty-balance-amount { color: var(--paper); font-size: 32px; margin-top: 4px; }
+.loyalty-balance-note { font-size: 13px; color: #C9C3CE; display: block; margin-top: 4px; }
+
+.loyalty-info-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 36px;
+}
+.loyalty-info-card {
+  background: var(--paper-dim);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+}
+.loyalty-info-card strong { font-size: 13.5px; display: block; margin-bottom: 6px; }
+.loyalty-info-card p { font-size: 13px; }
+
+.loyalty-history-title { font-size: 19px; margin-bottom: 16px; }
+
+.loyalty-history-list { display: flex; flex-direction: column; gap: 4px; }
+.loyalty-history-item {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.loyalty-history-icon {
+  width: 34px; height: 34px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.loyalty-history-icon.earned { background: var(--sage); color: #3E5A3A; }
+.loyalty-history-icon.redeemed { background: var(--blush); color: var(--action-dim); }
+
+.loyalty-history-info { display: flex; flex-direction: column; gap: 3px; flex: 1; }
+.loyalty-history-info strong { font-size: 14px; }
+.loyalty-history-info span { font-size: 12px; color: var(--ink-soft); }
+
+.loyalty-history-points { font-weight: 800; font-size: 14px; }
+.loyalty-history-points.earned { color: #3E5A3A; }
+.loyalty-history-points.redeemed { color: var(--action-dim); }
+
+@media (max-width: 700px) {
+  .loyalty-info-row { grid-template-columns: 1fr; }
+  .loyalty-balance-card { flex-direction: column; text-align: center; }
+}
