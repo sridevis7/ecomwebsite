@@ -63,7 +63,6 @@ after this in vs code terminal npm install, the node_module & package json insta
 | Database | MongoDB Atlas + Mongoose |
 | Authentication | JWT + bcryptjs |
 | Image Storage | Cloudinary |
-| AI Features | Anthropic Claude API (`claude-sonnet-4-6`) |
 | Email | Nodemailer (Gmail SMTP) |
 | Notifications | react-hot-toast |
 | Icons | react-icons (Feather) |
