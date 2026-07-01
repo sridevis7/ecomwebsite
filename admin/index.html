@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>StyleHub — Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ============ LOGIN SCREEN ============ -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-card">
+    <div class="brand" style="color:var(--ink);padding:0 0 24px;">Style<span>Hub</span><small>Admin</small></div>
+    <h1>Sign in</h1>
+    <p class="login-sub">Use your StyleHub admin account credentials.</p>
+    <div class="field">
+      <label>Email</label>
+      <input id="loginEmail" type="email" placeholder="you@example.com" />
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input id="loginPassword" type="password" placeholder="••••••••" />
+    </div>
+    <div class="field">
+      <label>Backend URL</label>
+      <input id="apiUrl" type="text" value="http://localhost:5000/api" />
+    </div>
+    <button class="btn btn-primary btn-full" onclick="login()">Sign in</button>
+    <p class="login-error" id="loginError" hidden></p>
+  </div>
+</div>
+
+<!-- ============ MAIN ADMIN APP (hidden until logged in) ============ -->
+<div class="shell" id="adminShell" hidden>
+
+  <aside class="sidebar">
+    <div class="brand">Style<span>Hub</span><small>Admin</small></div>
+
+    <nav class="nav">
+      <button class="nav-link active" data-view="dashboard">
+        <svg viewBox="0 0 20 20"><path d="M3 3h6v6H3V3zm8 0h6v6h-6V3zM3 11h6v6H3v-6zm8 0h6v6h-6v-6z" fill="currentColor"/></svg>
+        Dashboard
+      </button>
+      <button class="nav-link" data-view="sellers">
+        <svg viewBox="0 0 20 20"><path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-6 9a6 6 0 1112 0H4z" fill="currentColor"/></svg>
+        Sellers <span class="nav-count" id="navSellerCount">0</span>
+      </button>
+      <button class="nav-link" data-view="orders">
+        <svg viewBox="0 0 20 20"><path d="M4 3h12l1 4H3l1-4zm-1 5h14v9H3V8zm4 2v5h2v-5H7zm4 0v5h2v-5h-2z" fill="currentColor"/></svg>
+        Orders
+      </button>
+      <button class="nav-link" data-view="inventory">
+        <svg viewBox="0 0 20 20"><path d="M3 4h14v3H3V4zm1 4h12v9H4V8zm3 2v5h6v-5H7z" fill="currentColor"/></svg>
+        Inventory
+      </button>
+      <button class="nav-link" data-view="returns">
+        <svg viewBox="0 0 20 20"><path d="M4 9a6 6 0 0110-4.5V3l3 3-3 3V7a4 4 0 10.9 4H17a6 6 0 11-13-2z" fill="currentColor"/></svg>
+        Returns
+      </button>
+    </nav>
+
+    <button class="sidebar-logout" onclick="logout()">
+      <svg viewBox="0 0 20 20"><path d="M7 3H4a1 1 0 00-1 1v12a1 1 0 001 1h3v-2H5V5h2V3zm9 6l-4-4v3H7v2h5v3l4-4z" fill="currentColor"/></svg>
+      Sign out
+    </button>
+  </aside>
+
+  <main class="content">
+
+    <section class="view active" id="view-dashboard">
+      <header class="view-head">
+        <div>
+          <span class="eyebrow">Overview</span>
+          <h1>Good morning. Here's the ledger.</h1>
+        </div>
+        <button class="btn btn-outline" onclick="loadAll()">⟳ Refresh</button>
+      </header>
+
+      <div class="stat-grid">
+        <div class="stat-card"><span class="stat-spine spine-clay"></span><span class="stat-label">Total revenue</span><span class="stat-value" id="statRevenue">—</span></div>
+        <div class="stat-card"><span class="stat-spine spine-sage"></span><span class="stat-label">Total orders</span><span class="stat-value" id="statOrders">—</span></div>
+        <div class="stat-card"><span class="stat-spine spine-amber"></span><span class="stat-label">Customers</span><span class="stat-value" id="statCustomers">—</span></div>
+        <div class="stat-card"><span class="stat-spine spine-plum"></span><span class="stat-label">Approved sellers</span><span class="stat-value" id="statSellers">—</span></div>
+      </div>
+
+      <div class="banner" id="pendingBanner" hidden>
+        <svg viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm0 4v5l3 2" stroke="currentColor" stroke-width="1.6" fill="none"/></svg>
+        <span><strong id="pendingCount">0</strong> seller application(s) waiting for review</span>
+        <button class="banner-action" data-goto="sellers">Review now</button>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><strong>Monthly revenue</strong></div>
+        <div class="bar-chart" id="revenueChart"></div>
+      </div>
+    </section>
+
+    <section class="view" id="view-sellers">
+      <header class="view-head">
+        <div><span class="eyebrow">Applications &amp; accounts</span><h1>Sellers</h1></div>
+        <div class="filter-tabs" id="sellerFilterTabs">
+          <button class="active" data-filter="pending">Pending</button>
+          <button data-filter="approved">Approved</button>
+          <button data-filter="rejected">Rejected</button>
+          <button data-filter="all">All</button>
+        </div>
+      </header>
+      <div class="card-list" id="sellerList"><div class="empty-row">Loading…</div></div>
+    </section>
+
+    <section class="view" id="view-orders">
+      <header class="view-head">
+        <div><span class="eyebrow">Platform-wide</span><h1>Orders</h1></div>
+      </header>
+      <div class="table" id="orderTable">
+        <div class="table-row table-head"><span>Order</span><span>Customer</span><span>Total</span><span>Payment</span><span>Status</span></div>
+      </div>
+    </section>
+
+    <section class="view" id="view-inventory">
+      <header class="view-head">
+        <div><span class="eyebrow">Stock levels</span><h1>Inventory</h1></div>
+        <div class="filter-tabs" id="inventoryFilterTabs">
+          <button class="active" data-filter="low">Low stock</button>
+          <button data-filter="out">Out of stock</button>
+          <button data-filter="all">All products</button>
+        </div>
+      </header>
+      <div class="table" id="inventoryTable">
+        <div class="table-row table-head"><span>Product</span><span>Seller</span><span>Stock</span><span>Sold</span></div>
+      </div>
+    </section>
+
+    <section class="view" id="view-returns">
+      <header class="view-head">
+        <div><span class="eyebrow">Refund requests</span><h1>Returns</h1></div>
+      </header>
+      <div class="card-list" id="returnsList"><div class="empty-row">Loading…</div></div>
+    </section>
+
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
