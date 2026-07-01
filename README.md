@@ -7,9 +7,13 @@ report document : https://drive.google.com/file/d/1_XrbU2AT8Aho46BjVbzfrPqmxE0Fb
 StyleHub is a full-stack marketplace platform where multiple independent sellers list and manage their own clothing products, customers shop across all of them in one place, and a platform admin oversees seller approvals, orders, categories, and disputes — modeled after real marketplaces like Etsy or Daraz rather than a single-vendor store.
 
 # SETUP
-Admin - that folder
+
+Admin -  files in this folder
+
 Client - Src & Public folder 
-Server - Middlewre, Routes,
+
+Server - Middlewre, Routes, Models Folder
+
 
 ---
 
