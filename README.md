@@ -14,6 +14,9 @@ Client - Src & Public folder
 
 Server - Middlewre, Routes, Models Folder
 
+note: for client & server you can source the .env file,
+after this in vs code terminal npm install, the node_module & package json install automatically 
+
 
 ---
 
